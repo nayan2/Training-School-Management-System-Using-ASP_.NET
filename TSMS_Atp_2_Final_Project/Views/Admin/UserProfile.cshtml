@@ -1,0 +1,117 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.UserDetail
+
+@{
+    ViewBag.Title = "TSMS | User Profile";
+    ViewBag.Description = "";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>@ViewBag.Description</small>
+        </h1>
+    </section>
+}
+
+<div class="col-md-3  toppad  pull-right col-md-offset-5 ">
+    @Html.ActionLink("Back to Home", "Index", "Admin")|
+    @Html.ActionLink("Logout", "Logout", "Admin")
+    <br>
+    <p class=" text-info">@DateTime.Now </p>
+</div>
+<div class="form-horizontal">
+    <div class="row .col">
+        <div class="mainbox col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@Html.DisplayFor(model => model.fullname)</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3"><img alt="User Pic" src="@Url.Content(@Model.pic_path)" class="img-circle img-responsive"> </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <div class="table-responsive">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.fullname):</td>
+                                            <td>@Html.DisplayFor(model => model.fullname)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.first_name):</td>
+                                            <td>@Html.DisplayFor(model => model.first_name)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.last_name):</td>
+                                            <td>@Html.DisplayFor(model => model.last_name)</td>
+                                        </tr>
+                                        <tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.company_name):</td>
+                                            <td>@Html.DisplayFor(model => model.company_name)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.city):</td>
+                                            <td>@Html.DisplayFor(model => model.city)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.phone_number):</td>
+                                            <td>@Html.DisplayFor(model => model.phone_number)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.email):</td>
+                                            <td>@Html.DisplayFor(model => model.email)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.zip_code):</td>
+                                            <td>@Html.DisplayFor(model => model.zip_code)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.nationality):</td>
+                                            <td>@Html.DisplayFor(model => model.nationality)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.sex):</td>
+                                            <td>@Html.DisplayFor(model => model.sex)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.religion):</td>
+                                            <td>@Html.DisplayFor(model => model.religion)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.blood_group):</td>
+                                            <td>@Html.DisplayFor(model => model.blood_group)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.dob):</td>
+                                            <td>@Html.DisplayFor(model => model.dob)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.user_activation_date):</td>
+                                            <td>@Html.DisplayFor(model => model.user_activation_date)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.user_deactivation_date):</td>
+                                            <td>@Html.DisplayFor(model => model.user_deactivation_date)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.user_active):</td>
+                                            <td><label id="status" style="border-radius: 2px;background-color: #397823;padding:5px;">@Model.user_active</label></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a style="visibility:hidden;" data-original-title="" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <span class="pull-right">
+                        <a href="@Url.Action("EditUserProfile", "Admin", new { id = Model.id })" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

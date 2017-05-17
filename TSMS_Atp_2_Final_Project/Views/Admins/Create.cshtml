@@ -1,0 +1,160 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.UserDetail
+
+@{
+    ViewBag.Title = "Add Admin";
+    ViewBag.Description = "TSMS-admin";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>@ViewBag.Description</small>
+        </h1>
+    </section>
+}
+
+@using (Html.BeginForm("Create", "Admins", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.user_activation_date, new { @Value = System.DateTime.Now })
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+
+        <div class="row .col">
+            <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Craete Admin</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <img class="center-block" style="border-radius: 3px;height: 200px;width: 200px;" id="venpic" src="~/Content/img/tsms/default/upload.png">
+                            <br /><br />
+                            <label style="border-radius: 4px;" class="col-xs-12 btn btn-primary btn-load btn-lg" data-loading-text="Uploading Picture...">
+                                <input autocomplete="off" name="pic_path" id="ifile_img" accept="image/gif,image/jpeg,image/jpg" onchange="readURL(this,'#venpic')" type="file" style="display: none;">Upload Pic
+                            </label>
+                            @Html.ValidationMessageFor(model => model.pic_path, null, new { @class = "text-danger" })
+                            <br /><br /><br />
+                        </div>
+
+                        <div class="col-md-6">
+                            <div>
+                                @Html.LabelFor(model => model.fullname, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.fullname, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.fullname), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.fullname, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.first_name, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.first_name, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.first_name), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(m => m.first_name, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.last_name, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.last_name, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.last_name), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(m => m.last_name, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.company_name, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.company_name, new { @style = "border-radius:3px;", @type = "text", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.company_name), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.company_name, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.nationality, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.nationality, new { @style = "border-radius:3px;", @type = "text", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.nationality), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.nationality, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.religion, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.religion, new { @style = "border-radius:3px;", @type = "text", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.religion), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.religion, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.dob, new { @class = "control-label" })
+                                <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                                    @Html.TextBoxFor(m => m.dob, new { @class = "form-control", @size = "16", @type = "text", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.dob) })
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.dob, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div>
+                                @Html.LabelFor(model => model.city, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.city, new { @style = "border-radius:3px;", @type = "text", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.city), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.city, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.phone_number, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.phone_number, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.phone_number), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.phone_number, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.email, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.email, new { @style = "border-radius:3px;", @type = "email", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.email), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.email, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.zip_code, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.zip_code, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.zip_code), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.zip_code, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.sex, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.sex, new { @style = "border-radius:3px;", @type = "text", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.sex), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.sex, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.blood_group, new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.blood_group, new { @style = "border-radius:3px;", @type = "text", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.blood_group), @autocomplete = "on" })
+                                @Html.ValidationMessageFor(model => model.blood_group, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(model => model.user_active, new { @class = "control-label" })
+                                @Html.DropDownList("user_active", (IEnumerable<SelectListItem>)ViewBag.user_active, new { @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                                @Html.ValidationMessageFor(model => model.user_active, null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="panel-title">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Create" class="btn btn-success" /> | @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        endDate: '+0d',
+        format: "yyyy-mm-dd hh:ii:ss P",
+        pickerPosition: "top-left"
+    });
+</script>

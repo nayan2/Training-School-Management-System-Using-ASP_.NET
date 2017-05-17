@@ -1,0 +1,70 @@
+﻿@using TSMS_Atp_2_Final_Project.Models.Com.Tsms
+@model Vendor
+@{
+    ViewBag.Title = "Add Vendor";
+    ViewBag.Description = "TSMS-admin";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>@ViewBag.Description</small>
+        </h1>
+    </section>
+}
+
+@section Scripts{
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                CustomMessage('Error', '@ViewBag.Message', 'Close');
+            });
+        </script>
+    }
+}
+
+
+<div class="row .col">
+    <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+        @using (Html.BeginForm("Add", "Admin", FormMethod.Post, new { @class = "form-horizontal", @id = "AddVendorForm", @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.adding_date, new { @Value = System.DateTime.Now })
+            
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Add A New Vendor</div>
+                </div>
+                <div class="panel-body col-md-12">
+                    <div>
+                        <img class="center-block" style="border-radius: 3px;height: 200px;width: 200px;" id="venpic" src="~/Content/img/tsms/default/upload.png"><br><br /><br />
+                        <label style="border-radius: 2px;" class="col-xs-12 btn btn-primary btn-load btn-lg" data-loading-text="Uploadinging Picture...">
+                            <input autocomplete="off" required name="pic_path" id="ifile_img" accept="image/gif,image/jpeg,image/jpg" onchange="readURL(this,'#venpic')" type="file" style="display: none;">Choose Pic
+                        </label>
+                        @Html.ValidationMessageFor(model => model.pic_path, null, new { @class = "text-danger" })
+                    </div>
+                    <br /><br /><br />
+                    <div>
+                        @Html.TextBoxFor(model => model.heading, new { @style = "border-radius:3px;", @class = "form-control", @id = "VendorName", @placeholder = Html.DisplayNameFor(model => model.heading), @autocomplete = "on", @onkeyup = "uppercase(this)" })
+                        @Html.ValidationMessageFor(model => model.heading, null, new { @class = "text-danger" })
+                    </div>
+                    <br />
+                    <div>
+                        @Html.TextAreaFor(mode => mode.body, new { @style = "border-radius:3px;", @class = "form-control", @id = "VendorDetails", @placeholder = Html.DisplayNameFor(model => model.body), @autocomplete = "on" })
+                        @Html.ValidationMessageFor(model => model.body, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="panel-title">
+                        <div class="form-actions no-color">
+                            <input onclick="d()" type="button" id="AddVendor" value="Add" class="btn btn-success" /> | @Html.ActionLink("Back to List", "Manage")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

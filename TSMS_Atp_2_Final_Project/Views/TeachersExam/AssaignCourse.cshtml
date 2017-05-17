@@ -1,0 +1,71 @@
+﻿@model IEnumerable<TSMS_Atp_2_Final_Project.Models.Com.Tsms.ExamAssign>
+
+@{
+    ViewBag.Title = "AssaignStudent";
+    ViewBag.Title = "ExamId";
+    Layout = "~/Views/Shared/_ExamLayout.cshtml";
+}
+
+@section Style
+{
+    <title>Student Assign</title>
+}
+@section Html{
+
+    <h2>AssaignStudent</h2>
+
+    <p>
+        @using (Html.BeginForm())
+    {
+            <label>Course Name: </label>
+            <input type="text" name="crsName" id="Course" />
+            @Html.Hidden("hidden", null, htmlAttributes: new { @value = ViewBag.ExamId })
+            <input type="submit" value="submit" />
+        }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gotMark)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExamID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gotMark)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteAssign", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Back to Exam", "ExamDetail", new { id = ViewBag.ExamId })
+}
+@section Script
+{
+    <script type="text/javascript">
+      $(function ()
+      {
+          $('#Course').autocomplete({
+              source: '@Url.Action("GetCourses")'
+          });
+      });
+    </script>
+}

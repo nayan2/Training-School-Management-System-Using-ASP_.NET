@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TSMS_Atp_2_Final_Project.Models.Com.Tsms.ExamAssign>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_ExamLayout.cshtml";
+    Layout = null;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExamID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gotMark)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExamID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gotMark)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "ExamDetail", new { id=item.ExamID }) |
+        </td>
+    </tr>
+}
+
+</table>

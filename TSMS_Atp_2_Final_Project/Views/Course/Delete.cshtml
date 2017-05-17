@@ -1,0 +1,63 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Course
+
+@{
+    ViewBag.Title = "Delete Course";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>Tsms-admin</small>
+        </h1>
+    </section>
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <div class="row .col">
+        <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Delete - @Model.name</div>
+                </div>
+                <div class="panel-body">
+                    <img class="center-block" style="border-radius: 3px;height: 200px;width: 200px;" id="venpic" src="@Url.Content(Model.pic_path)">
+                    <br /><br />
+                    <div>
+                        @Html.LabelFor(model => model.name, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.name, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.name), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.code, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.code, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.code), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.adding_date, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.adding_date, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.adding_date), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.details, new { @class = "control-label" })
+                        @Html.TextAreaFor(mode => mode.details, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.details), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="panel-title">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

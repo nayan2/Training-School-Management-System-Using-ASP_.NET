@@ -1,0 +1,38 @@
+﻿@using TSMS_Atp_2_Final_Project.Models.Com.Tsms
+@model IEnumerable<Vendor>
+<link href="~/Content/Custom_Admin.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "TSMS | Admin index";
+    ViewBag.Description = "Admin Page";
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+
+        });
+    </script>
+}
+
+<div class="row" style="margin-left:10px">
+    <div style="width:98%" class="well well-lg"><h1>Vendors List......</h1></div>
+    <div class="row" style="width:99%;">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-5 col-md-4">
+                <div class="thumbnail">
+                    <img style="height: 200px;width: 100%" src="@Url.Content(item.pic_path)" alt="...">
+                    <div class="caption">
+                        <h3 style="text-align:center">@Html.DisplayFor(modelitem => item.heading)</h3>
+                        @Html.HiddenFor(modelitem => item.heading)
+                        <p class="text-justify" style="height: 100px;overflow: auto;">@Html.DisplayFor(modelitem => item.body)</p>
+                        <p class="row container-fluid">
+                            <a href="@Url.Action("Manage", "Admin")" class="btn btn-primary pull-left" role="button">Manage</a>
+                            <a href="@Url.Action("Delete", "Admin", new { id=item.heading })" class="btn btn-danger pull-right" role="button">Delete</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

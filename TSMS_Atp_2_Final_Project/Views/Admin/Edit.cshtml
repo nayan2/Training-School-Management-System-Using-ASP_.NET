@@ -1,0 +1,93 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Vendor
+
+@{
+    ViewBag.Title = "Edit Vendor";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>Tsms-admin</small>
+        </h1>
+    </section>
+}
+
+@section Scripts{
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                CustomMessage('Error', '@ViewBag.Message', 'Close');
+            });
+        </script>
+    }
+}
+
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { @class = "form-horizontal", @id = "AddVendorForm", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.heading)
+    @Html.HiddenFor(model => model.pic_path)
+
+    <div class="form-horizontal">
+        <div class="row .col">
+            <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Edit Vendor - @Model.heading</div>
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <img class="center-block" style="border-radius: 3px;height: 200px;width: 200px;" id="venpic" src="@Url.Content(@Model.pic_path)">
+                            <br /><br />
+                            <label style="border-radius: 2px;" class="col-xs-12 btn btn-primary btn-load btn-lg" data-loading-text="Changing Picture...">
+                                <input autocomplete="off" name="Modifyedpic_path" id="ifile_img" accept="image/gif,image/jpeg,image/jpg" onchange="readURL(this,'#venpic')" type="file" style="display: none;">Changen Pic
+                            </label>
+                            @Html.ValidationMessageFor(model => model.pic_path, null, new { @class = "text-danger" })
+                        </div>
+                        <br /><br /><br />
+                        <div>
+                            @Html.LabelFor(model => model.adding_date, new { @class = "control-label" })
+                            <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                                @Html.TextBoxFor(m => m.adding_date, new { @class = "form-control", @size = "16", @type = "text", @value = "", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.adding_date) })
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.adding_date, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.body, new { @class = "control-label" })
+                            @Html.TextAreaFor(mode => mode.body, new { @style = "border-radius:3px;", @class = "form-control", @id = "VendorDetails", @placeholder = Html.DisplayNameFor(model => model.body), @autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.body, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="panel-title">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Save" class="btn btn-warning" /> | @Html.ActionLink("Back to List", "Manage", "Admin")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        endDate: '+0d',
+        format: "yyyy-mm-dd hh:ii",
+        pickerPosition: "top-left"
+    });
+</script>        

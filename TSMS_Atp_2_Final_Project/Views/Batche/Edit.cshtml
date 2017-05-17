@@ -1,0 +1,119 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Batche
+
+@{
+    ViewBag.Title = "Edit Batch";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>Tsms-admin</small>
+        </h1>
+    </section>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.batch_code)
+
+        <div class="row .col">
+            <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Edit Batch - @Model.batch_code</div>
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            @Html.LabelFor(model => model.name, "Course Name", new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.name, (SelectList)ViewBag.nameList, "Select One", new { @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                            @Html.ValidationMessageFor(model => model.name, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.batch_code, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.batch_code, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.batch_code), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(m => m.batch_code, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.faculty_name, "Faculty Name", new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.faculty_name, (SelectList)ViewBag.faculty_nameList, "Select One", new { @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                            @Html.ValidationMessageFor(model => model.faculty_name, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.room_number, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.room_number, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.room_number), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.room_number, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.amount, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.amount, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.amount), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.amount, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.batch_starting_date, new { @class = "control-label" })
+                            <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                                @Html.TextBoxFor(m => m.batch_starting_date, new { @class = "form-control", @size = "16", @type = "text", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.batch_starting_date) })
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.batch_starting_date, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.admission_last_date, new { @class = "control-label" })
+                            <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                                @Html.TextBoxFor(m => m.admission_last_date, new { @class = "form-control", @size = "16", @type = "text", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.admission_last_date) })
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.admission_last_date, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.routine, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.routine, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.routine), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.routine, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.details, new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.details, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.details), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.details, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="panel-title">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Save" class="btn btn-warning" /> | @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        endDate: '+0d',
+        format: "yyyy-mm-dd hh:ii:ss P",
+        pickerPosition: "top-left"
+    });
+</script>

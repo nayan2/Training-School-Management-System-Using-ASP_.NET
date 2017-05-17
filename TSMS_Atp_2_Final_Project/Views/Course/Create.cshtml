@@ -1,0 +1,77 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Course
+
+@{
+    ViewBag.Title = "Create Course";
+    ViewBag.Description = "TSMS-admin";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>@ViewBag.Description</small>
+        </h1>
+    </section>
+}
+
+@using (Html.BeginForm("Create", "Course", FormMethod.Post, new { @class = "form-horizontal", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.adding_date, new { @Value = System.DateTime.Now })
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+        <div class="row .col">
+            <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Add Course</div>
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            <img class="center-block" style="border-radius: 3px;height: 200px;width: 200px;" id="venpic" src="~/Content/img/tsms/default/upload.png">
+                            <br /><br />
+                            <label style="border-radius: 2px;" class="col-xs-12 btn btn-primary btn-load btn-lg" data-loading-text="Uploading Picture...">
+                                <input autocomplete="off" name="pic_path" id="ifile_img" accept="image/gif,image/jpeg,image/jpg" onchange="readURL(this,'#venpic')" type="file" style="display: none;">Choose Pic
+                            </label>
+                            @Html.ValidationMessageFor(model => model.pic_path, null, new { @class = "text-danger" })
+                            <br /><br /><br />
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.vendor_heading, "Vendor Name", new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.vendor_heading, (IEnumerable<SelectListItem>)ViewBag.vendor_headingList, "Select One", new { @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                            @Html.ValidationMessageFor(m => m.vendor_heading, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.name, new { @class = "control-label" })
+                            @Html.TextBoxFor(mode => mode.name, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.name), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(m => m.name, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.code, new { @class = "control-label" })
+                            @Html.TextBoxFor(mode => mode.code, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.code), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(m => m.code, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.details, new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.details, new { @style = "border-radius:3px;", @class = "form-control", @id = "CourseDetails", @placeholder = Html.DisplayNameFor(m => m.details), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.details, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="panel-title">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Create" class="btn btn-success" /> | @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

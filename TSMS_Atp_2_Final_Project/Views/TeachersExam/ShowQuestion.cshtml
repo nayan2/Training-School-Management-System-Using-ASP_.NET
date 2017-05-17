@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TSMS_Atp_2_Final_Project.Models.Com.Tsms.Question>
+
+@using TSMS_Atp_2_Final_Project.Models.Com.Tsms
+@{
+    Layout = null;
+    ViewBag.Title = "ExamId";
+    ViewBag.Title = "duration";
+    ViewBag.Title = "CountDown";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Script/jquery-2.0.3.js"></script>
+    <script src="~/Script/jquery.countdownTimer.js"></script>
+    <link href="~/Style/jquery.countdownTimer.css" rel="stylesheet" />
+    <title>ShowQuestion</title>
+</head>
+<body>
+    <div id="countdowntimer" style="position:fixed; top:5px; right:5px;"><span id="future_date"></span></div>
+    <div> 
+
+        <div>
+           
+            @using (Html.BeginForm())
+            {
+                <table>
+                    <tr>
+                        <td>
+                            <label></label>
+                            <input type="hidden" id="hiddentime" name="hiddentime" value="@ViewBag.CountDown" />
+                            <input type="hidden" name="hidden" value="@ViewBag.ExamId" />
+                           
+                        </td>
+                    </tr>
+                    @foreach (Question item in Model)
+                    {
+
+                        <tr>
+                            <td><label>Question Number: @item.QuestionNumber</label></td>
+                            <td><label>Mark: @item.mark</label></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @{string quesid = "QuesId" + item.QuestionNumber.ToString();}
+                                <input type="hidden" name="@quesid" value="@item.Id" />
+                                @Html.DisplayFor(modelItem => item.QuestionTitle)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name="@item.QuestionNumber" value="1" /><label>@item.Option1</label><br />
+                                <input type="radio" name="@item.QuestionNumber" value="2" /><label>@item.Option2</label><br />
+                                <input type="radio" name="@item.QuestionNumber" value="3" /><label>@item.Option3</label><br />
+                                <input type="radio" name="@item.QuestionNumber" value="4" /><label>@item.Option4</label><br />
+                                <input type="radio" name="@item.QuestionNumber" value="5" /><label>@item.Option5</label><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    }
+                </table>
+                <input type="submit" value="submit" />
+            }
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        setTimeout("auto()", @ViewBag.duration );
+        var time = $("#hiddentime").val();
+        $('#future_date').countdowntimer({
+            dateAndTime: time,
+            size: "sm"
+        });
+    });
+    function auto()
+    {
+        $("form").submit();
+    }
+</script>

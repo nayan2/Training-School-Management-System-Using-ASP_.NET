@@ -1,0 +1,104 @@
+﻿@model IEnumerable<TSMS_Atp_2_Final_Project.Models.Com.Tsms.Exam>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+      @Html.ActionLink("Create New Exam", "CreateExam")
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinishTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionMaker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalQues)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarkPerQues)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamState)
+            </th>
+            <th>Actions</th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink(Convert.ToString(item.Id),"ExamDetail",new { id=item.Id})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinishTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionMaker)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalQues)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarkPerQues)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExamState)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditExam", new { id=item.Id }) |
+                @Html.ActionLink("Details", "ExamDetail", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "DeleteExam", new { id=item.Id })
+                @Html.ActionLink("Exam Result", "ExamResult", new { id = item.Id }) |
+            </td>
+        </tr>
+    }
+    
+    </table>
+    @Html.ActionLink("Student Result", "StudentResult") |
+   
+</body>
+</html>

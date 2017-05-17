@@ -1,0 +1,76 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Course
+
+@{
+    ViewBag.Title = "Course Details";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>Tsms-admin</small>
+        </h1>
+    </section>
+}
+
+<div>
+    <div class="row .col">
+        <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Course Details - @Model.name</div>
+                </div>
+                <div class="panel-body">
+                    <img class="center-block" style="border-radius: 3px;height: 200px;width: 200px;" id="venpic" src="@Url.Content(Model.pic_path)">
+                    <br /><br />
+                    <div>
+                        @Html.LabelFor(model => model.name, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.name, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.name), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.code, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.code, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.code), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.adding_date, new { @class = "control-label" })
+                        <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                            @Html.TextBoxFor(m => m.adding_date, new { @class = "form-control", @size = "16", @type = "text", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.adding_date) })
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        @Html.LabelFor(model => model.details, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.details, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.details), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="panel-title">
+                        <div class="form-actions no-color">
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.name }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        endDate: '+0d',
+        format: "yyyy-mm-dd hh:ii:ss P",
+        pickerPosition: "top-left"
+    });
+</script>

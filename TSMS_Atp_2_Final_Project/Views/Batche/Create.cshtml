@@ -1,0 +1,268 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Batche
+
+@{
+    ViewBag.Title = "Create Batch";
+    ViewBag.Description = "TSMS-admin";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>@ViewBag.Description</small>
+        </h1>
+    </section>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, null, new { @class = "text-danger" })
+
+        <div class="row .col">
+            <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">Add Batch</div>
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            @Html.LabelFor(model => model.Course.vendor_heading, "Vendor Name", new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.Course.vendor_heading, (IEnumerable<SelectListItem>)ViewBag.vendor_heading, "Select One", new { @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                            @Html.ValidationMessageFor(model => model.Course.vendor_heading, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.name, "Course Name", new { @class = "control-label" })
+                            @Html.DropDownList("name", (IEnumerable<SelectListItem>)ViewBag.name, "Select One", new { @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                            @Html.ValidationMessageFor(model => model.name, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.batch_code, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.batch_code, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.batch_code), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(m => m.batch_code, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.faculty_name, "Faculty Name", new { @class = "control-label" })
+                            @Html.DropDownList("faculty_name", (IEnumerable<SelectListItem>)ViewBag.faculty_name, "Select One", new { @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                            @Html.ValidationMessageFor(model => model.faculty_name, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.room_number, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.room_number, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.room_number), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.room_number, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.amount, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.amount, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.amount), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.amount, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.batch_starting_date, new { @class = "control-label" })
+                            <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                                @Html.TextBoxFor(m => m.batch_starting_date, new { @class = "form-control", @size = "16", @type = "text", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.batch_starting_date) })
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.batch_starting_date, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.admission_last_date, new { @class = "control-label" })
+                            <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                                @Html.TextBoxFor(m => m.admission_last_date, new { @class = "form-control", @size = "16", @type = "text", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.admission_last_date) })
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.admission_last_date, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.routine, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.routine, htmlAttributes: new { @readonly = "readonly", @data_toggle = "modal", @data_target = "#squarespaceModal", @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.routine), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.routine, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(model => model.details, new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.details, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.details), @autocomplete = "on" })
+                            @Html.ValidationMessageFor(model => model.details, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="panel-title">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Create" class="btn btn-success" /> | @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- line modal -->
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="lineModalLabel">Create Batch Routine</h3>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Day In A Week</label>
+                        <div class="col-md-12">
+                            <input onkeyup="CheckDayInAWeek()" id="DayInAWeek" type="number" class="form-control" placeholder="1 Or 2 Day In A Week?">
+                            <label id="DayInAWeekError" style="display:none;color:red;font-weight:normal !important"></label>
+                        </div>
+                    </div>
+                    <div id="1Day" style="display:none">
+                        <label class="control-label">Day</label><br />
+                        <div class="form-group col-md-12">
+                            @Html.DropDownList("Day7", (IEnumerable<SelectListItem>)ViewBag.Day7, "Select One", new { @id = "Day1", @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Time</label><br />
+                            <div class="col-md-6">
+                                <label class="control-label">Start Time</label><br />
+                                <div>
+                                    <div class="input-group date form_time col-md-12" data-date="" data-date-format="HH:ii P" data-link-field="dtp_input3" data-link-format="hh:ii">
+                                        <input class="form-control" size="16" type="text" value="" readonly id="Time1">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label">End Time</label><br />
+                                <div>
+                                    <div class="input-group date form_time col-md-12" data-date="" data-date-format="HH:ii P" data-link-field="dtp_input3" data-link-format="hh:ii">
+                                        <input class="form-control" size="16" type="text" value="" readonly id="Time2">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">&nbsp;</div>
+                    </div>
+                    <div id="2Day" style="display:none">
+                        <div id="FirstDay">
+                            <label class="control-label">Day</label><br />
+                            <div class="form-group col-md-12">
+                                @Html.DropDownList("Day7", (IEnumerable<SelectListItem>)ViewBag.Day7, "Select One", new { @id = "Day2", @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Time</label><br />
+                                <div class="col-md-6">
+                                    <label class="control-label">Start Time</label><br />
+                                    <div>
+                                        <div class="input-group date form_time col-md-12" data-date="" data-date-format="HH:ii P" data-link-field="dtp_input3" data-link-format="hh:ii">
+                                            <input class="form-control" size="16" type="text" value="" readonly id="Time3">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label">End Time</label><br />
+                                    <div>
+                                        <div class="input-group date form_time col-md-12" data-date="" data-date-format="HH:ii P" data-link-field="dtp_input3" data-link-format="hh:ii">
+                                            <input class="form-control" size="16" type="text" value="" readonly id="Time4">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="SecondDay">
+                            <label class="control-label">Day</label><br />
+                            <div class="form-group col-md-12">
+                                @Html.DropDownList("Day7", (IEnumerable<SelectListItem>)ViewBag.Day7, "Select One", new { @id = "Day3", @class = "form-control input-lg", @style = "min-height:45px;width:100%;" })
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Time</label><br />
+                                <div class="col-md-6">
+                                    <label class="control-label">Start Time</label><br />
+                                    <div>
+                                        <div class="input-group date form_time col-md-12" data-date="" data-date-format="HH:ii P" data-link-field="dtp_input3" data-link-format="hh:ii">
+                                            <input class="form-control" size="16" type="text" value="" readonly id="Time5">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label">End Time</label><br />
+                                    <div>
+                                        <div class="input-group date form_time col-md-12" data-date="" data-date-format="HH:ii P" data-link-field="dtp_input3" data-link-format="hh:ii">
+                                            <input class="form-control" size="16" type="text" value="" readonly id="Time6">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">&nbsp;</div>
+                    </div>
+                    &nbsp;
+                    <div class="form-group col-md-12">
+                        <input readonly disabled type="text" class="form-control" id="totalRoutinefield" placeholder="Routine">
+                    </div>
+                    <div class="form-group">&nbsp;</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+                    <div class="btn-group" role="group">
+                        <button type="button" id="closeImage" class="btn btn-danger btn-hover-green" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button onclick="GenerateRoutine()" type="button" id="saveImage" class="btn btn-success btn-hover-green" data-action="save">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        endDate: '+0d',
+        format: "yyyy-mm-dd hh:ii:ss P",
+        pickerPosition: "top-left"
+    });
+    $(".form_time").datetimepicker({
+        todayBtn: true,
+        format: "HH:ii P",
+        showMeridian: true,
+        autoclose: true,
+        pickerPosition: "top-left",
+        startView: 1
+    });         
+    $(function () {
+        $('#routine').keyup(function () {
+            $('#DayInAWeekError').html("");
+            $('#routine').click();
+        });
+    });
+</script>

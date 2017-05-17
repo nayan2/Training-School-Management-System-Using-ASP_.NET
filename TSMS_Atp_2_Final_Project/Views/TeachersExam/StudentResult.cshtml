@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TSMS_Atp_2_Final_Project.Models.Com.Tsms.ExamAssign>
+
+@{
+    ViewBag.Title = "StudentResult";
+    Layout = "~/Views/Shared/_ExamLayout.cshtml";
+}
+
+<h2>StudentResult</h2>
+
+<img src="~/Content/img/tsms/instructor/nayanchowdhury92@yahoo.com.jpg" />
+<p>
+    @using (Html.BeginForm())
+    {
+        <label>Student Id: </label>
+        <input type="text" name="stuName" id="Student" />
+        @Html.Hidden("hidden", null, htmlAttributes: new { @value = ViewBag.ExamId })
+        <input type="submit" value="submit" />
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExamID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gotMark)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
+            <td>
+                @Html.ActionLink(item.ExamID.ToString(), "ExamDetail", new { id = item.ExamID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gotMark)
+            </td>
+
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Index", "Index")
+@section Script
+{
+    <script type="text/javascript">
+      $(function ()
+      {
+          $('#Student').autocomplete({
+              source: '@Url.Action("GetStudents")'
+          });
+      });
+    </script>
+}

@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "ExamId";
+    ViewBag.Title = "TotalMarks";
+    ViewBag.Title = "achieved";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowResult</title>
+</head>
+<body>
+    <div> 
+        <h1>Result</h1>
+        <label>You got @ViewBag.achieved from @ViewBag.TotalMarks </label>
+        @Html.ActionLink("Return To Exam Detail","ExamDetail",new { id=ViewBag.ExamId});
+    </div>
+</body>
+</html>

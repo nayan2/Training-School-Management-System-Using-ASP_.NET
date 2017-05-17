@@ -1,0 +1,66 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Financeofstudent
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Financeofstudent</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Batche.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Batche.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.debit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.debit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.credit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.credit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastTrunsaction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastTrunsaction)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

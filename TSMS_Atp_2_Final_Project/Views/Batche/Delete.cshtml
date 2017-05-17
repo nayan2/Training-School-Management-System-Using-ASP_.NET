@@ -1,0 +1,113 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Batche
+
+@{
+    ViewBag.Title = "Delete Batch";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>Tsms-admin</small>
+        </h1>
+    </section>
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="dl-horizontal">
+    <div class="row .col">
+        <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Delete Batch - @Model.batch_code</div>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        @Html.LabelFor(model => model.Course.vendor_heading, "Vendor Name", new { @class = "control-label" })
+                        @Html.TextBox("vendor_heading", TempData["Courses"], new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.Course.vendor_heading), @autocomplete = "off", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.name, "Course Name", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.name, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.name), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.batch_code, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.batch_code, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.batch_code), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.faculty_name, "Faculty Name", new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.faculty_name, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.faculty_name), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.room_number, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.room_number, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.room_number), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.amount, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.amount, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.amount), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.batch_starting_date, new { @class = "control-label" })
+                        <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                            @Html.TextBoxFor(m => m.batch_starting_date, new { @class = "form-control", @size = "16", @type = "text", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.batch_starting_date) })
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.admission_last_date, new { @class = "control-label" })
+                        <div class="input-group date form_datetime col-md-12" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii p" data-link-field="dtp_input1">
+                            @Html.TextBoxFor(m => m.admission_last_date, new { @class = "form-control", @size = "16", @type = "text", @readonly = "readonly", @placeholder = Html.DisplayNameFor(m => m.admission_last_date) })
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.routine, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.routine, new { @style = "border-radius:3px;", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.routine), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.details, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.details, new { @style = "border-radius:3px;", @type = "number", @class = "form-control", @placeholder = Html.DisplayNameFor(m => m.details), @autocomplete = "on", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="panel-title">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1,
+        endDate: '+0d',
+        format: "yyyy-mm-dd hh:ii:ss P",
+        pickerPosition: "top-left"
+    });
+</script>

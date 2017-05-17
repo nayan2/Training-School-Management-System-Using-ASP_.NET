@@ -1,0 +1,101 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Exam
+
+
+@{
+    Layout = null;
+    ViewBag.Title = "QuestionMakerName";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ExamDetail</title>
+</head>
+<body>
+    <div>
+        <h4>Exam</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Course)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Course)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StartTime)
+            </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FinishTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FinishTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.QuestionMaker)
+            </dt>
+
+            <dd>
+                <label>@ViewBag.QuestionMakerName</label>
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalQues)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalQues)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MarkPerQues)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MarkPerQues)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Show Question", "ShowQuestion","TeachersExam",new { id = Model.Id })
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

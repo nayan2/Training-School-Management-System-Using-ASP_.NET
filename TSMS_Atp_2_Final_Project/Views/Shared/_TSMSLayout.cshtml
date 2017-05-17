@@ -1,0 +1,30 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/Content/img/tsms/financial-literacy.gif" sizes="32x32">
+    @Scripts.Render("~/bundles/scripts")
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="~/Content/Custom_Login.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("Scripts" , false)
+    @RenderSection("Styles" , false)
+</head>
+<body>
+        <center><p style="font-weight:bold;" >Training School Management System</p></center>
+        @RenderBody()
+    </div>
+</body>
+<footer>
+    <center>
+        <p>@@Sp-2 Project</p>
+    </center>
+</footer> 
+</html>

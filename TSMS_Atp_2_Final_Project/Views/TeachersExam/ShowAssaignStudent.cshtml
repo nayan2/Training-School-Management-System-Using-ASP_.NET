@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TSMS_Atp_2_Final_Project.Models.Com.Tsms.ExamAssign>
+
+@{
+    Layout = null;
+    ViewBag.Title = "ExamId";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowAssaignStudent</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Assign New Student", "AssaignStudent",new { id=ViewBag.ExamId})
+        @Html.ActionLink("Assign New Course", "AssaignCourse", new { id = ViewBag.ExamId })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gotMark)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExamID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gotMark)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.StudentID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.StudentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.StudentID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

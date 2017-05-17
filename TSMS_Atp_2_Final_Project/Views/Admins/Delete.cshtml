@@ -1,0 +1,117 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.UserDetail
+
+@{
+    ViewBag.Title = "Delete Admin";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>Tsms-admin</small>
+        </h1>
+    </section>
+}
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="form-horizontal">
+    <div class="row .col">
+        <div class="mainbox col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Delete Admin - @Html.DisplayFor(model => model.fullname)</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="@Url.Content(@Model.pic_path)" class="img-circle img-responsive"> </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <div class="table-responsive">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.fullname):</td>
+                                            <td>@Html.DisplayFor(model => model.fullname)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.first_name):</td>
+                                            <td>@Html.DisplayFor(model => model.first_name)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.last_name):</td>
+                                            <td>@Html.DisplayFor(model => model.last_name)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.company_name):</td>
+                                            <td>@Html.DisplayFor(model => model.company_name)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.city):</td>
+                                            <td>@Html.DisplayFor(model => model.city)</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.phone_number):</td>
+                                            <td>@Html.DisplayFor(model => model.phone_number)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.email):</td>
+                                            <td>@Html.DisplayFor(model => model.email)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.zip_code):</td>
+                                            <td>@Html.DisplayFor(model => model.zip_code)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.nationality):</td>
+                                            <td>@Html.DisplayFor(model => model.nationality)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.sex):</td>
+                                            <td>@Html.DisplayFor(model => model.sex)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.religion):</td>
+                                            <td>@Html.DisplayFor(model => model.religion)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.blood_group):</td>
+                                            <td>@Html.DisplayFor(model => model.blood_group)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.dob):</td>
+                                            <td>@Html.DisplayFor(model => model.dob)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.user_activation_date):</td>
+                                            <td>@Html.DisplayFor(model => model.user_activation_date)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.user_deactivation_date):</td>
+                                            <td>@Html.DisplayFor(model => model.user_deactivation_date)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.user_active):</td>
+                                            <td>@Html.DisplayFor(model => model.user_active)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="panel-title">
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,172 @@
+﻿@using TSMS_Atp_2_Final_Project.Models.Com.Tsms
+@model IEnumerable<Instructor>
+
+@{
+    ViewBag.Title = "Instructor";
+}
+
+<h2>Available Instructor Details...</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Instructor")" class="btn btn-primary btn-sm">Create New</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-inverse table-bordered">
+        <tr>
+            <th scope="row">#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.pic_path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.first_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.faculty_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Batche.batch_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Batche.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.company_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.city)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.zip_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nationality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.religion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.blood_group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.faculty_activation_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.faculty_inactivation_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.faculty_active)
+            </th>
+            <th></th>
+        </tr>
+        @{
+            IEnumerable<Batche> batchtable = TempData["Batches"] as IEnumerable<Batche>;
+            int counter = 0;
+        }
+        @foreach (var item in Model)
+        {
+            counter++;
+            <tr>
+                <td>@counter</td>
+                <td>
+                    <img src="@Url.Content(@item.pic_path)" height="80" width="80" style="border-radius:2px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.first_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.faculty_name)
+                </td>
+                <td>
+                    @{
+                        var batches = (from a in batchtable where a.faculty_name == item.faculty_name select new { a.batch_code }).ToList();
+                    }
+                    <select style="width:200px;" onchange="alert(this.value)" class="form-control input-lg">
+                        @{
+                            foreach (var batch in batches)
+                            {
+                                <option value="@batch.batch_code">@batch.batch_code</option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    @{
+                        var courses = (from a in batchtable where a.faculty_name == item.faculty_name select new { a.name }).ToList();
+                    }
+                    <select style="width:200px;" onchange="alert(this.value)" class="form-control input-lg">
+                        @{
+                            foreach (var course in courses)
+                            {
+                                <option value="@course.name">@course.name</option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.company_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.zip_code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nationality)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sex)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.religion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.blood_group)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.faculty_activation_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.faculty_inactivation_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.faculty_active)
+                </td>
+                <td>
+                    <div style="width:130px;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.InstructorId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.InstructorId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.InstructorId })
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

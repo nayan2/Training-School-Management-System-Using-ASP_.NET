@@ -1,0 +1,47 @@
+﻿@model TSMS_Atp_2_Final_Project.Models.Com.Tsms.Vendor
+
+@{
+    ViewBag.Title = "Vendor Details";
+}
+
+@section PageDescription{
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+            <small>Tsms-admin</small>
+        </h1>
+    </section>
+}
+
+<div>
+    <div class="row .col">
+        <div style="margin-top:20px" class="mainbox col-md-12 col-md-offset-0 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Vendor Details - @Model.heading</div>
+                </div>
+                <div class="panel-body">
+                    <img class="center-block" style="border-radius: 3px;height: 200px;width: 200px;" id="venpic" src="@Url.Content(Model.pic_path)">
+                    <br /><br />
+                    <div>
+                        @Html.LabelFor(model => model.adding_date, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.adding_date, new { @style = "border-radius:3px;", @class = "form-control", @id = "VendorName", @placeholder = Html.DisplayNameFor(model=> model.adding_date), @autocomplete = "off", @readonly = "readonly" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.body, new { @class = "control-label" })
+                        @Html.TextAreaFor(mode => mode.body, new { @style = "border-radius:3px;", @class = "form-control", @id = "VendorDetails", @placeholder = Html.DisplayNameFor(model=> model.body), @autocomplete = "off", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="panel-title">
+                        <div class="form-actions no-color">
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.heading }, new { @class = "btn btn-warning" }) |
+                            @Html.ActionLink("Back to List", "Manage", "Admin")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
